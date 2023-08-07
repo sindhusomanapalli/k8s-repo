@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: servive-mempage
+spec:
+  selector:
+    app: mempage
+  type: LoadBalancer
+  ports:
+    - port: 8082
+      targetPort: 8080
+      nodePort: 30001
+

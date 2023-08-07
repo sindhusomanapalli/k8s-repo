@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mempage-deployment
+  labels:
+    app: mempage
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mempage
+  template:
+    metadata:
+      labels:
+        app: mempage
+    spec:
+      containers:
+        - name: mempage-container
+          image: sindhukorampalli/mempage:1.0
+          ports:
+            - containerPort: 8080
+
