@@ -1,4 +1,7 @@
 docker build -t mempage .
+
+docker login 
+
 docker tag mempage:latest sindhukorampalli/mempage:latest
 docker push sindhukorampalli/mempage:latest
 
