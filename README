@@ -1,0 +1,13 @@
+docker build -t mempage .
+docker tag mempage:latest sindhukorampalli/mempage:latest
+docker push sindhukorampalli/mempage:latest
+
+docker run -it -d --name mempage -p 8080:8080 mempage:latest
+
+access this application using:
+http://public ip :8080/maven-web-application/
+
+          OR
+
+use this "sindhukorampalli/mempage:latest" in your "deploy-mempage.yaml"  file
+
