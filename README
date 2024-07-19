@@ -15,5 +15,5 @@ docker push sindhukorampalli/mempage:1.0
 use this "sindhukorampalli/mempage:1.0" in your "deploy-mempage.yaml"  file
 
 access this application using:
-http://EXTERNAL-IP:8082/maven-web-application/
+http://EXTERNAL-IP:8080/maven-web-application/
 
