@@ -17,3 +17,52 @@ use this "sindhukorampalli/mempage:1.0" in your "deploy-mempage.yaml"  file
 access this application using:
 http://EXTERNAL-IP:8080/maven-web-application/
 
+
+HELM:
+
+before going to install helm we need to setup k8s cluster in cloud
+
+## install helm using below command:
+
+curl -L https://git.io/get_helm.sh | bash -s -- --version v3.8.2
+
+1. helm create helm
+
+2. helm lint helm
+
+3. helm package helm
+		OR
+helm package helm --version 0.1.0
+
+4. helm install --dry-run mychart helm-0.1.0
+
+5. helm install  mychart helm-0.1.0
+
+6. helm list
+
+after updating the code we can repeate the steps and update the existing chart like below:
+
+1. helm create helm
+
+2. helm lint helm
+
+3. helm package helm
+		OR
+helm package helm --version 0.2.0
+
+4. helm install --dry-run mychart helm-0.2.0
+
+5. helm upgrade --install mychart helm-0.2.0
+
+6. helm list
+
+7. helm history mychart
+
+8. helm rollback mychart 1     
+-----> here 1 is revision number it will found on "helm history mychart"
+
+9. helm delete mychart
+
+
+
+
