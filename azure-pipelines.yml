@@ -20,3 +20,40 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+############################
+HELM pipeline
+##################################
+
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: HelmInstaller@0
+  inputs:
+    helmVersion: '2.14.1'
+    installKubectl: true
+
+- task: HelmDeploy@1
+  inputs:
+    azureSubscriptionForACR: 'Free Trial (94fb6bc8-2d46-4caf-add2-d29fd0661e59)'
+    azureResourceGroupForACR: 's-rg'
+    azureContainerRegistry: 'myhelm.azurecr.io'
+    command: 'package'
+    chartPath: 'helm'
+    chartNameForACR: 'helm'
+    chartPathForACR: 'helm'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
