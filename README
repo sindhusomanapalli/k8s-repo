@@ -61,6 +61,9 @@ helm package helm --version 0.2.0
 8. helm rollback mychart 1     
 -----> here 1 is revision number it will found on "helm history mychart"
 
+access this application using:
+http://EXTERNAL-IP:8080/maven-web-application/
+
 9. helm delete mychart
 
 
